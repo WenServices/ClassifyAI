@@ -1,2 +1,2 @@
 # ClassifyAI
-AI Service that classifies data with given or passed model structure to use in code
+AI Service that classifies inputs and returns an object based on a given model
