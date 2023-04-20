@@ -1,0 +1,70 @@
+{
+  "model": {
+    "request_type": "",
+    "requestScope": ""
+  },
+  "model_description": {
+    "request_type": {
+      "values": [
+        {
+          "key": "Question",
+          "description": "Choose this if the user request is a question"
+        },
+        {
+          "key": "Statement",
+          "description": "Choose this if the user request is a statement"
+        }
+      ]
+    },
+    "requestScope": [
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Question",
+        "key": "Product",
+        "description": "Choose this if the question is about a product"
+      },
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Question",
+        "key": "Order",
+        "description": "Choose this if the question is about an order"
+      },
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Question",
+        "key": "Company",
+        "description": "Choose this if the question is about a company"
+      },
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Question",
+        "key": "Other",
+        "description": "Choose this if the question is neither of the above"
+      },
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Statement",
+        "key": "Product",
+        "description": "Choose this if the statement is about a product"
+      },
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Statement",
+        "key": "Order",
+        "description": "Choose this if the statement is about an order"
+      },
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Statement",
+        "key": "Company",
+        "description": "Choose this if the statement is about the company"
+      },
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Statement",
+        "key": "Other",
+        "description": "Choose this if the statement is neither of the above"
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "model": {
+    "request_type": "",
+    "requestScope": ""
+  },
+  "model_description": {
+    "request_type": {
+      "values": [
+        {
+          "key": "Question",
+          "description": "Choose this if the user request is a question"
+        },
+        {
+          "key": "Statement",
+          "description": "Choose this if the user request is a statement"
+        }
+      ]
+    },
+    "requestScope": [
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Question",
+        "key": "Personal",
+        "description": "Choose this if the question is about the user himself or other persons"
+      },
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Question",
+        "key": "Other",
+        "description": "Choose this if the question is neither of the above"
+      },
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Statement",
+        "key": "Personal",
+        "description": "Choose this if the statement is about the user himself or other persons"
+      },
+      {
+        "dependsOn": "request_type",
+        "dependsOnValue": "Statement",
+        "key": "Other",
+        "description": "Choose this if the statement is neither of the above"
+      }
+    ]
+  }
+}

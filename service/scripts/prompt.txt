@@ -1,0 +1,16 @@
+As a skilled data categorizer, your task is to process the provided input and use the accompanying description to accurately classify the data. Then, populate the provided model with appropriate values.
+
+The model structure is:
+{model}
+
+The model description is as follows:
+{model_description}
+
+Here is additional context:
+{context}
+
+Given the user input below:
+{input}
+
+Please generate a valid JSON model that adheres to the specified model structure.
+Don't return the model_description structure, only the model structure!
