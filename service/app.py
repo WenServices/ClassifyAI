@@ -16,4 +16,7 @@ app.config.update({
 
 # Start the Flask app
 if __name__ == '__main__':
-    app.run()
+    # Read the port number from the .env file
+    port = int(os.getenv('PORT', 5000))
+    # Run the Flask app using the port number from the .env file
+    app.run(host='127.0.0.1', port=port)

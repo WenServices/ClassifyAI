@@ -53,6 +53,9 @@ If you encounter problems, please open an Issue
         #Loggin Level (INFO, DEBUG, WARNING, ERROR, CRITICAL)
         LOG_LEVEL=INFO
 
+        #Port to run the server on (Default is 5000)
+        PORT=5000
+
         # OpenAI API Key
         OPENAI_API_KEY=your_openai_api_key
 
