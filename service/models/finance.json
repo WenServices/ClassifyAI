@@ -1,0 +1,65 @@
+{
+  "model": {
+    "input_type": "",
+    "asset_class": "",
+    "financial_action": ""
+  },
+  "model_description": {
+    "transaction_type": {
+      "values": [
+        {
+          "key": "Question",
+          "description": "Question"
+        },
+        {
+          "key": "Statement",
+          "description": "Statement"
+        }
+      ]
+    },
+    "asset_class": [
+      {
+        "key": "Stocks",
+        "description": "Fill it with this if the input is about Stocks"
+      },
+      {
+        "key": "Bonds",
+        "description": "Fill it with this if the input is about Bonds"
+      },
+      {
+        "key": "RealEstate",
+        "description": "Fill it with this if the input is about Real Estate"
+      },
+      {
+        "key": "Crypto",
+        "description": "Fill it with this if the input is about Cryptocurrency"
+      },
+      {
+        "key": "Other",
+        "description": "Fill it with this if the input is about Other"
+      }
+    ],
+    "financial_action": [
+      {
+        "key": "Buy",
+        "description": "Fill it with this if the input is about Buy"
+      },
+      {
+        "key": "Sell",
+        "description": "Fill it with this if the input is about Sell"
+      },
+      {
+        "key": "Hold",
+        "description": "Fill it with this if the input is about Hold"
+      },
+      {
+        "key": "Research",
+        "description": "Fill it with this if the input is about Research"
+      },
+      {
+        "key": "Other",
+        "description": "Fill it with this if the input is about Other"
+      }
+    ]
+  }
+}
