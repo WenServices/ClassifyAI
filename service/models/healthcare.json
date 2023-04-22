@@ -1,0 +1,36 @@
+{
+  "model": {
+    "category": "",
+    "subCategory": ""
+  },
+  "model_description": {
+    "category": {
+      "values": [
+        {
+          "key": "Symptom",
+          "description": "Choose this if the text is about a symptom"
+        },
+        {
+          "key": "Medication",
+          "description": "Choose this if the text is about a medication"
+        }
+      ]
+    },
+    "subCategory": {
+      "values": [
+        {
+          "dependsOn": "category",
+          "dependsOnValue": "Symptom",
+          "key": "*",
+          "description": "Fill the model with the name of one of the following symptoms which the text talks about Acute symptom, Chronic symptom, Constitutional symptom, Local symptom, Systemic symptom, Negative symptom, Positive symptom, Prodromal symptom, Refractory symptom, Subclinical symptom."
+        },
+        {
+          "dependsOn": "category",
+          "dependsOnValue": "Medication",
+          "key": "*",
+          "description": "Try to figure out the drug or medication names from the text and fill the model with them. the model is a string!"
+        }
+      ]
+    }
+  }
+}

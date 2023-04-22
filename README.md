@@ -14,8 +14,12 @@ This API sends back responses in the format of the specified model, making it ea
 
 ## Alpha Versions
 
-- 0.1.0 - First Version that is able to take user inputs and respond with the given model
-- 0.2.0 - API Test scripts - TBA
+- 0.1.0
+  - First Version that is able to take user inputs and respond with the given model
+- 0.2.0
+  - You can now define and run tests for your models in /test
+  - New default models finance and healthcare + Tests
+  - New Approach on healthcare model to not set the value key but let openAI API decide what to fill
 - 0.3.0 - create, edit and delete models over python API - TBA
 - 0.4.0 - Management Website to create, edit and delte models - TBA
 - 0.5.0 - Documentation on https://docs.wen.solutions/docs/Intro - TBA
@@ -256,6 +260,50 @@ Replace `your_openai_api_key` with your actual OpenAI API key and set the other 
             "requestScope": "Company",
             "requestType": "Question"
         }
+
+<br/><br/>
+
+# Tests
+
+## Define tests
+
+After you have created a model you can add a new file into the /test/data folder e.g. healthcare.py
+
+The structure looks like this
+
+        test_cases = [
+            # Acute Symptom
+            {
+                "name": "acute_symptom_case",                # Test Name
+                "input": {
+                    "model": "healthcare",                   # Model Name
+                    "input": "I have a headache.",           # User Input
+                    "reference_id": "AcuteSymptomQuery1",    # Optional
+                    "reference_id_name": "_id",              # Optional
+                },
+                "expected_output": {
+                    "_id": "AcuteSymptomQuery1",
+                    "category": "Symptom",
+                    "subCategory": "Acute symptom",
+                },
+                "repeat": 1,    #Repeat test n times
+            }
+        ]
+
+## Run tests
+
+1.  Go to ./test
+
+        cd test
+
+2.  Run all tests
+    ! This makes multiple openAI requests!
+
+        python3 test.py
+
+3.  Run specific model tests with adding the name
+
+        python3 test.py healthcare
 
 <br/><br/>
 
