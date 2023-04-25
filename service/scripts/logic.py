@@ -9,6 +9,7 @@ load_dotenv()
 # Default model and token values
 MAX_INPUT_LENGTH = int(os.getenv("MAX_INPUT_LENGTH"))
 MAX_CONTEXT_LENGTH = int(os.getenv("MAX_CONTEXT_LENGTH"))
+MODELS_DIR = os.path.join(os.getcwd(), "models")
 
 # Configure the logger
 logger = logging.getLogger(__name__)
@@ -26,6 +27,38 @@ def classify(data_object):
 
     return result
 
+def get_all_models():
+    model_files = os.listdir(MODELS_DIR)
+    model_names = [os.path.splitext(model)[0] for model in model_files if model.endswith(".json")]
+    return model_names
+
+def get_model(model_name):
+    model_file = os.path.join(MODELS_DIR, f"{model_name}.json")
+
+    if not os.path.exists(model_file):
+        raise FileNotFoundError(f"Model '{model_name}' not found.")
+
+    with open(model_file, 'r') as f:
+        model_content = json.load(f)
+
+    return model_content
+
+def create_or_update_model(model_name, model_content):
+    if not isinstance(model_content, dict) or not all(k in model_content for k in ('model', 'model_description')):
+        raise ValueError("The model content must be a valid JSON object with 'model' and 'model_description' fields.")
+
+    model_file = os.path.join(MODELS_DIR, f"{model_name}.json")
+
+    with open(model_file, 'w') as f:
+        json.dump(model_content, f)
+
+def delete_model(model_name):
+    model_file = os.path.join(MODELS_DIR, f"{model_name}.json")
+
+    if not os.path.exists(model_file):
+        raise FileNotFoundError(f"Model '{model_name}' not found.")
+
+    os.remove(model_file)
 
 # Validation functions
 def validate_data_object(data_object):
@@ -110,3 +143,4 @@ def is_json(value):
     except ValueError:
         return False
     return True
+
