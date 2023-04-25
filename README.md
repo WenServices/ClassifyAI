@@ -21,6 +21,8 @@ This API sends back responses in the format of the specified model, making it ea
   - New default models finance and healthcare + Tests
   - New Approach on healthcare model to not set the value key but let openAI API decide what to fill
 - 0.3.0 - create, edit and delete models over python API - TBA
+  - New Endpoints models for listing, retrieving, creating, changing and deleting models
+  - You can see it [here](#api-reference)
 - 0.4.0 - Management Website to create, edit and delte models - TBA
 - 0.5.0 - Documentation on https://docs.wen.solutions/docs/Intro - TBA
 - 0.6.0 - Add pip package to use in python projects
@@ -325,6 +327,89 @@ The structure looks like this
   - Content: { "result": "classification_result" }
 - Error Response:
   - Code: 400 BAD REQUEST
+  - Content: { "error": "Error message" }
+
+## API Endpoints
+
+### POST /classify
+
+- URL: /classify
+- Method: POST
+- Headers: Content-Type: application/json
+- Data Params:
+  - input: (string, required) The input text to be classified.
+  - model: (string or JSON object, required) The model name or model JSON object to be used for classification.
+  - context: (string, optional) Additional context to be provided to the GPT model.
+  - reference_id: The response will contain this reference ID
+  - reference_id_name: The response will call the reference ID according to this field
+- Success Response:
+  - Code: 200
+  - Content: { "result": "classification_result" }
+- Error Response:
+  - Code: 400 BAD REQUEST
+  - Content: { "error": "Error message" }
+
+### GET /models
+
+- URL: /models
+- Method: GET
+- Headers: None
+- Success Response:
+  - Code: 200
+  - Content: [ "model1", "model2", ... ]
+- Error Response:
+  - Code: 500 INTERNAL SERVER ERROR
+  - Content: { "error": "Error message" }
+
+### GET /models/:model_name
+
+- URL: /models/:model_name
+- Method: GET
+- Headers: None
+- URL Params:
+  - model_name: (string, required) The name of the model to retrieve.
+- Success Response:
+  - Code: 200
+  - Content: { "model": "model_content", "model_description": "model_description" }
+- Error Response:
+  - Code: 404 NOT FOUND
+  - Content: { "error": "Error message" }
+  - Code: 500 INTERNAL SERVER ERROR
+  - Content: { "error": "Error message" }
+
+### POST /models/:model_name
+
+- URL: /models/:model_name
+- Method: POST
+- Headers: Content-Type: application/json
+- URL Params:
+  - model_name: (string, required) The name of the model to create or update.
+- Data Params:
+  - model: (JSON object, required) The model JSON object.
+  - model_description: (string, required) The description of the model.
+- Success Response:
+  - Code: 200
+  - Content: { "message": "Model 'model_name' created or modified successfully." }
+- Error Response:
+  - Code: 400 BAD REQUEST
+  - Content: { "error": "Error message" }
+  - Code: 500 INTERNAL SERVER ERROR
+  - Content: { "error": "Error message" }
+
+### DELETE /models/:model_name
+
+- URL: /models/:model_name
+- Method: DELETE
+- Headers: None
+- URL Params:
+  - model_name: (string, required) The name of the model to delete.
+- Success Response:
+  - Code: 200
+  - Content: { "message": "Model 'model_name' deleted successfully." }
+- Error Response:
+  - Code: 404 NOT FOUND
+  - Content: { "error": "Error message" }
+  - Code: 500 INTERNAL SERVER ERROR
   - Content: { "error": "Error message" }
 
 <br/><br/>
